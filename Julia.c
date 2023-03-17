@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   Julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelfany <abelfany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 13:23:35 by abelfany          #+#    #+#             */
-/*   Updated: 2023/03/16 19:55:17 by abelfany         ###   ########.fr       */
+/*   Created: 2023/03/14 21:55:43 by abelfany          #+#    #+#             */
+/*   Updated: 2023/03/16 19:52:11 by abelfany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int mandelbrot(double x, double y, double width, double hight)
+int julia(double x, double y, double width, double hight)
 {
     t_mnbt m;
     double a;
@@ -27,8 +27,8 @@ int mandelbrot(double x, double y, double width, double hight)
     {
         m.r = a * a - b * b;
         m.i = 2 * b * a;
-        a = m.r + m.j;
-        b = m.i + m.k;
+        a = m.r - 0.5;
+        b = m.i + 0.5;
         if((a * a) + (b * b) > 4)
             break;
         c++;

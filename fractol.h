@@ -6,7 +6,7 @@
 /*   By: abelfany <abelfany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:19:37 by abelfany          #+#    #+#             */
-/*   Updated: 2023/03/13 19:00:17 by abelfany         ###   ########.fr       */
+/*   Updated: 2023/03/15 12:37:48 by abelfany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_mlx
     int x;
     int y;
     int hight;
-    int weight;
+    int width;
     int a;
     char *str;
     void *mlx;
@@ -38,14 +38,22 @@ typedef struct s_mlx
     
 }   t_mlx;
 
+typedef struct s_mnbt
+{
+    double k;
+    double i;
+    double r;
+    double j;
+}   t_mnbt;
+
 typedef struct s_lst
 {
     char *str;
     struct s_lst *next;
 }   t_lst;
 
-long long           ft_atoi(const char *str);
-double              mandelbrot(double x, double y, double weight, double hight);
+int mandelbrot(double x, double y, double width, double hight);
+int julia(double x, double y, double width, double hight);
 
 #endif
 

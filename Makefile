@@ -6,7 +6,7 @@
 #    By: abelfany <abelfany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/08 16:23:03 by abelfany          #+#    #+#              #
-#    Updated: 2023/03/12 11:59:23 by abelfany         ###   ########.fr        #
+#    Updated: 2023/03/16 16:52:51 by abelfany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = fractol
 SRC_M = fractol.c \
 		ft_atoi.c \
 		mandelbrot.c \
+		Julia.c \
 
 OBJ_S = $(SRC_M:.c=.o)
 CFLAG = -Wall -Wextra -Werror
