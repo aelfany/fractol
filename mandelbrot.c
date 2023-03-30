@@ -6,21 +6,21 @@
 /*   By: abelfany <abelfany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:23:35 by abelfany          #+#    #+#             */
-/*   Updated: 2023/03/16 19:55:17 by abelfany         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:47:15 by abelfany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int mandelbrot(double x, double y, double width, double hight)
+int mandelbrot(double j, double y, t_mlx *x)
 {
     t_mnbt m;
     double a;
     double b;
     double c;
     c = 0.0;
-    a = (x - (width / 2)) / (width / 4);
-    b = (y - (hight / 2)) / (hight / 4);
+    a = (j - (x->width / 2)) / (x->width / 4);
+    b = (y - (x->hight / 2)) / (x->hight / 4);
     m.j = a;
     m.k = b;
     while(c < ITR)

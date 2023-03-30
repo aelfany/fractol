@@ -6,29 +6,29 @@
 /*   By: abelfany <abelfany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:55:43 by abelfany          #+#    #+#             */
-/*   Updated: 2023/03/16 19:52:11 by abelfany         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:45:25 by abelfany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int julia(double x, double y, double width, double hight)
+int julia(double j, double y, t_mlx *x)
 {
     t_mnbt m;
     double a;
     double b;
     double c;
     c = 0.0;
-    a = (x - (width / 2)) / (width / 4);
-    b = (y - (hight / 2)) / (hight / 4);
+    a = (j - (x->width / 2)) / (x->width / 4);
+    b = (y - (x->hight / 2)) / (x->hight / 4);
     m.j = a;
     m.k = b;
     while(c < ITR)
     {
         m.r = a * a - b * b;
         m.i = 2 * b * a;
-        a = m.r - 0.5;
-        b = m.i + 0.5;
+        a = m.r + x->st;
+        b = m.i + x->nt;
         if((a * a) + (b * b) > 4)
             break;
         c++;

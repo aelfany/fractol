@@ -6,14 +6,14 @@
 /*   By: abelfany <abelfany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:19:37 by abelfany          #+#    #+#             */
-/*   Updated: 2023/03/15 12:37:48 by abelfany         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:53:03 by abelfany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# define ITR 80
+# define ITR 800
 # define MAX 2.0
 
 #include<libc.h>
@@ -22,20 +22,22 @@
 
 typedef struct s_mlx
 {
-    char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-    int x;
-    int y;
-    int hight;
-    int width;
-    int a;
-    char *str;
-    void *mlx;
-    void *win;
-    void *img;
-    
+	int     bits_per_pixel;
+	int     line_length;
+	int     endian;
+    int     hight;
+    int     width;
+    char    *addr;
+    char    *set;
+    void    *mlx;
+    void    *win;
+    void    *img;
+    double  a;
+	double  y;
+	double  x;
+	double  i;
+    double st;
+    double nt;
 }   t_mlx;
 
 typedef struct s_mnbt
@@ -52,8 +54,12 @@ typedef struct s_lst
     struct s_lst *next;
 }   t_lst;
 
-int mandelbrot(double x, double y, double width, double hight);
-int julia(double x, double y, double width, double hight);
+int mandelbrot(double j, double y, t_mlx *x);
+int julia(double j, double y, t_mlx *x);
+void fractal_generator(t_mlx *x, char *set);
+int	ft_strcmp(char *s1, char *s2);
+int handler(int x, int y, t_mlx *k);
+int ft_atoi(const char *str);
 
 #endif
 
