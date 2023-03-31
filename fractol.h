@@ -6,14 +6,14 @@
 /*   By: abelfany <abelfany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:19:37 by abelfany          #+#    #+#             */
-/*   Updated: 2023/03/30 20:53:03 by abelfany         ###   ########.fr       */
+/*   Updated: 2023/03/31 21:28:02 by abelfany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# define ITR 800
+# define ITR 100
 # define MAX 2.0
 
 #include<libc.h>
@@ -32,6 +32,8 @@ typedef struct s_mlx
     void    *mlx;
     void    *win;
     void    *img;
+    int  zo0m;
+    int  handler;
     double  a;
 	double  y;
 	double  x;
@@ -46,6 +48,7 @@ typedef struct s_mnbt
     double i;
     double r;
     double j;
+    int color;
 }   t_mnbt;
 
 typedef struct s_lst
@@ -58,7 +61,9 @@ int mandelbrot(double j, double y, t_mlx *x);
 int julia(double j, double y, t_mlx *x);
 void fractal_generator(t_mlx *x, char *set);
 int	ft_strcmp(char *s1, char *s2);
+int burning_ship(double j, double y, t_mlx *x);
 int handler(int x, int y, t_mlx *k);
+int zoom_handler(int a, t_mlx *x);
 int ft_atoi(const char *str);
 
 #endif

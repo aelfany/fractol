@@ -21,5 +21,10 @@ double ft_atof(char *str)
         r *= 0.1;
         a++;
     }
+	printf("%f\n", res);
     return res;
+}
+int main(int ac, char **av)
+{
+	ft_atof(av[1]);
 }
