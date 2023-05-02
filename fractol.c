@@ -6,68 +6,24 @@
 /*   By: abelfany <abelfany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:22:16 by abelfany          #+#    #+#             */
-/*   Updated: 2023/04/05 00:13:57 by abelfany         ###   ########.fr       */
+/*   Updated: 2023/04/08 17:18:33 by abelfany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fractol.h"
 
-void	ft_putstr(char *s)
-{
-	int	a;
-
-	a = 0;
-	while (s[a])
-	{
-		write(1, &s[a], 1);
-		a++;
-	}
-}
-
-void	error_case(void)
-{
-	ft_putstr("\033[0;105m\033[1;92m* ");
-	ft_putstr("***********************************************\
-****************************************************\033[0;33m\n");
-	ft_putstr("\033[0;105m\033[1;92m*                            ");
-	ft_putstr("-> (: Welcome to this fractal generator :)\
-	<-                          *\033[0;33m\n");
-	ft_putstr("\033[0;105m\033[1;92m*                            ");
-	ft_putstr("     if you want to display fractal\
-                                    *\033[0;33m\n");
-	ft_putstr("\033[0;105m\033[1;92m* ");
-	ft_putstr("to display Mandelbrot set type :                 \
-                                                 *\033[0;33m\n");
-	ft_putstr("\033[0;105m\033[1;92m* ");
-	ft_putstr("-> ./fractol mandelbrot                          \
-                                                 *\033[0;33m\n");
-	ft_putstr("\033[0;105m\033[1;92m* ");
-	ft_putstr("to display Burning Ship set type :               \
-                                                 *\033[0;33m\n");
-	ft_putstr("\033[0;105m\033[1;92m* ");
-	ft_putstr("-> ./fractol burning_ship                        \
-                                                 *\033[0;33m\n");
-	ft_putstr("\033[0;105m\033[1;92m* ");
-	ft_putstr("to display julia sets type :                     \
-                                                 *\033[0;33m\n");
-	ft_putstr("\033[0;105m\033[1;92m* ");
-	ft_putstr("-> ./fractol julia (you can choose any Julia set \
-you want by moving the mouse inside the window)  *\033[0;33m\n");
-	ft_putstr("\033[0;105m\033[1;92m* ");
-	ft_putstr("*************************************************\
-**************************************************\033[0;33m\n");
-	exit(0);
-}
-
 int	key_code(int a, t_mlx *x)
 {
 	if (a == 53)
+	{
+		mlx_destroy_image(x->mlx, x->img);
 		exit(0);
-	if (a == 12 && (x->zo0m == 0))
+	}
+	if (a == 12 && (x->zo0m != 1))
 		x->zo0m = 1;
 	else if (a == 12 && (x->zo0m == 1))
 		x->zo0m = 0;
-	else if (a == 48)
+	else if (a == 257)
 	{
 		if (x->color == 0)
 			x->color = 2;
@@ -111,21 +67,26 @@ void	fractal_generator(t_mlx *x)
 	mlx_put_image_to_window(x->mlx, x->win, x->img, 0, 0);
 }
 
+void	init_var(t_mlx *x)
+{
+	x->zo0m = 0;
+	x->color = 0;
+	x->width = 800;
+	x->hight = 800;
+	x->move_left = 0.0;
+	x->move_right = 0.0;
+}
+
 int	main(int ac, char **av)
 {
 	t_mlx	x;
 
 	if (ac == 2)
 	{
-		x.zo0m = 0;
-		x.set = av[1];
 		x.mlx = mlx_init();
-		x.width = 800;
-		x.hight = 800;
-		x.color = 0;
-		x.move_left = 0.0;
-		x.move_right = 0.0;
+		init_var(&x);
 		x.img = NULL;
+		x.set = av[1];
 		x.win = mlx_new_window(x.mlx, x.width, x.hight, "fractol");
 		x.zoom_width = (4.0 / x.width);
 		x.zoom_hight = (4.0 / x.hight);
@@ -134,6 +95,7 @@ int	main(int ac, char **av)
 		mlx_key_hook(x.win, &key_code, &x);
 		mlx_mouse_hook(x.win, &zoom_handler, &x);
 		mlx_hook(x.win, 6, 0, handler, &x);
+		mlx_hook(x.win, 17, 0, close_handler, &x);
 		fractal_generator(&x);
 		mlx_loop(x.mlx);
 	}

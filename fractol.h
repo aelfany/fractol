@@ -6,7 +6,7 @@
 /*   By: abelfany <abelfany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:19:37 by abelfany          #+#    #+#             */
-/*   Updated: 2023/04/05 00:09:35 by abelfany         ###   ########.fr       */
+/*   Updated: 2023/04/08 17:23:22 by abelfany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_mnbt
 }	t_mnbt;
 
 void	color_order(t_mlx *x);
+int		close_handler(t_mlx *x);
+void	error_case(void);
 int		key_handler(int a, t_mlx *x);
 int		mandelbrot(double j, double y, t_mlx *x);
 int		julia(double j, double y, t_mlx *x);

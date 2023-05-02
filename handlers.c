@@ -6,24 +6,30 @@
 /*   By: abelfany <abelfany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 15:39:26 by abelfany          #+#    #+#             */
-/*   Updated: 2023/04/04 23:25:47 by abelfany         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:39:15 by abelfany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+int	close_handler(t_mlx *x)
+{
+	mlx_destroy_window(x->mlx, x->win);
+	exit(0);
+}
+
 int	key_handler(int a, t_mlx *x)
 {
-	if (a == 2 || a == 0 || a == 13 || a == 1)
+	if (a == 123 || a == 124 || a == 126 || a == 125)
 	{
-		if (a == 2)
-			x->move_left -= 2;
-		if (a == 0)
-			x->move_left += 2;
-		if (a == 13)
-			x->move_right += 2;
-		if (a == 1)
-			x->move_right -= 2;
+		if (a == 124)
+			x->move_left -= 5;
+		if (a == 123)
+			x->move_left += 5;
+		if (a == 126)
+			x->move_right += 5;
+		if (a == 125)
+			x->move_right -= 5;
 		fractal_generator(x);
 	}
 	return (a);
@@ -36,29 +42,8 @@ int	zoom_handler(int a, int j, int y, t_mlx *x)
 	{
 		x->zoom_hight /= 2;
 		x->zoom_width /= 2;
-		x->p -= (j * x->zoom_hight);
-		x->pp -= (y * x->zoom_width);
-	}
-	else if (a == 4 && x->zo0m == 1)
-	{
-		x->p += (j * x->zoom_hight);
-		x->pp += (y * x->zoom_width);
-		x->zoom_hight *= 2;
-		x->zoom_width *= 2;
-	}
-	fractal_generator(x);
-	return (0);
-}
-
-int	move_handler(int a, int j, int y, t_mlx *x)
-{
-	x->zo0m = 1;
-	if (a == 5 && x->zo0m == 1)
-	{
-		x->zoom_hight /= 2;
-		x->zoom_width /= 2;
-		x->p -= (j * x->zoom_hight);
-		x->pp -= (y * x->zoom_width);
+		x->p -= ((j + x->move_left) * x->zoom_hight);
+		x->pp -= ((y + x->move_right) * x->zoom_width);
 	}
 	else if (a == 4 && x->zo0m == 1)
 	{
