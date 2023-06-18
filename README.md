@@ -40,6 +40,6 @@ Save the generated fractal graphics to your preferred location.
 Examples
 Here are some examples of the stunning fractal graphics you can create using this project:
 
-> Mandelbrot Set
-> Julia Set
-> Burning Ship
+- Mandelbrot Set
+- Julia Set
+- Burning Ship
