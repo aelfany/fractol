@@ -22,7 +22,7 @@ Fractals have captivated mathematicians, artists, and computer enthusiasts for t
 # Installation
 - Clone the repository:
 ```sh
-git clone https://github.com/your-username/fractal-graphics-project.git
+git clone https://github.com/aelfany/fractol.git
 ```
 - Navigate to the project directory:
 ```sh
