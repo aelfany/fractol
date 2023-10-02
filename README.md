@@ -14,7 +14,7 @@ This project aims to explore the fascinating world of fractals and generate visu
 Fractals have captivated mathematicians, artists, and computer enthusiasts for their intricate patterns and mesmerizing beauty. This project harnesses the power of algorithms to generate and render fractal graphics. By exploring different fractal formulas and techniques, it allows users to create unique and visually appealing images.
 
 # Features
-- Fractal Generation: Implementations of popular fractal algorithms, such as Mandelbrot set, Julia set, and Sierpinski triangle.
+- Fractal Generation: Implementations of popular fractal algorithms, such as Mandelbrot set, Julia set, and Burning Ship.
 - Customization: Adjustable parameters to control the appearance of fractals, such as zoom level, color palettes, and iteration counts.
 - Interactive Interface: A user-friendly interface to explore and navigate through the fractal space, enabling zooming and panning capabilities.
 - Image Export: Save generated fractal graphics as high-resolution images in popular formats like PNG or JPEG.
